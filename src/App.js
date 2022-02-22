@@ -4,16 +4,12 @@ import React from 'react';
 
 function App() {
 
-    return (
+  return (
       <>
-        <div className="App">
-          <Main/>
 
-          <header className="App-header">
-          </header>
-        </div>
+      <Main />
+
       </>
-    );
-  };
+  )};
 
-export default App;
+      export default App;
