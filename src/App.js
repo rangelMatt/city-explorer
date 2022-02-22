@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Main from './Main';
+import React from 'react';
 
 function App() {
 
-
-  render(){
     return (
       <>
         <div className="App">
+          <Main/>
+
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <p>
@@ -25,7 +27,6 @@ function App() {
         </div>
       </>
     );
-  }
-}
+  };
 
 export default App;
