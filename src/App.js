@@ -4,12 +4,13 @@ import React from 'react';
 
 function App() {
 
-  return (
-      <>
+    return (
+        <>
 
-      <Main />
+            <Main />
 
-      </>
-  )};
+        </>
+    )
+};
 
-      export default App;
+export default App;

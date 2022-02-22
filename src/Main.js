@@ -16,13 +16,18 @@ class Main extends React.Component {
   requestData = async (searchTerms) => {
     try {
     let locationIqData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.query}&format=json`)
+    // question mark is 
     console.log(searchTerms)
     console.log(locationIqData.data)   
     this.setState({
       locationData: locationIqData.data[0],
     })
   } catch (error) {
-    console.log('Wrongo, thats incorrect')
+    console.log('Wrongo, thats incorrect',error.message)
+    this.state({
+      error: true,
+      errorMessage: `Error has happened: ${error.response.status}, ${error.response.data.error}`
+    })
   }
 }
   handleQuery = (e) => {
