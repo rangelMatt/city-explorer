@@ -28,9 +28,9 @@ Using bootstrap HTML, JavaScript, React, Bootstrap React, Axios, API.
 
 -------------------------
 
-### Lab 06 time estimates
+## Lab 06 time estimates
 
-## Monday Feb 21, 2022
+### Monday Feb 21, 2022
 
 1. **Feature #1: Locations**
    - Estimate of time needed to complete: 1 hour
@@ -41,8 +41,9 @@ Using bootstrap HTML, JavaScript, React, Bootstrap React, Axios, API.
 2. **Feature #2: Maps**
    - Estimate of time needed to complete: 1 hour
    - Start time: 4:00pm
-   - Finish time:
-   - Actual time: Not complete
+   Dinner and family time and other assignment was in between somewhere
+   - Finish time: 10:00PM
+   - Actual time: 3.5 hours
 
 3. **Feature #3: Error**
    - Estimate of time needed to complete: 1 hour
