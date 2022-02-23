@@ -16,6 +16,7 @@ class Main extends React.Component {
   requestData = async (searchTerms) => {
     try {
     let locationIqData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.query}&format=json`)
+    // let weatherData = await axios.get(``)
     console.log(searchTerms)
     console.log(locationIqData.data)   
     this.setState({
