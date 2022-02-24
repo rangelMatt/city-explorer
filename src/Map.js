@@ -2,6 +2,12 @@ import React from "react";
 
 
 class Map extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        url: false
+      }
+    }
 
   render() {
     let locationName = this.props.locationData.display_name;
@@ -11,15 +17,13 @@ class Map extends React.Component {
     
     return (
       <>
+      
         <ul>
           <li>{locationName}</li>
           <li>{locationLat}</li>
           <li>{locationLong}</li>
         </ul>
-          <img useMap='#primary' 
-          src={url} 
-          alt=''
-          />
+          <img useMap='#primary' src={url} alt=''/>
           <map name ='primary'>
         </map>
       </>
