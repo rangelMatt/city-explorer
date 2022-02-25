@@ -49,8 +49,8 @@ class Main extends React.Component {
         weatherData: results.data,
         renderWeather: true,
       })
-    } catch (error) {
-      this.setState({
+    } catch(error) {
+      this.setState ({
         weatherError: true,
         weatherErrorMessage: `A Weather Error Occured: ${error.response.status}, ${error.response.data}`
       })
@@ -91,9 +91,6 @@ class Main extends React.Component {
     let dailyForecasts = this.state.weatherData.map((forecast, index) => {
       <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
     })
-    let dailyForecasts = this.state.weatherData.map((forecast, index) => (
-      <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
-    ))
 
     return (
       <>

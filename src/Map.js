@@ -4,6 +4,12 @@ import Image from "react-bootstrap/Image";
 
 
 class Map extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        url: false
+      }
+    }
 
   render() {
     let locationName = this.props.locationData.display_name;
