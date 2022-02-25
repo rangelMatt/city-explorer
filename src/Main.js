@@ -11,14 +11,31 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locationData: {},
-      query: '',
+      locationData: [],
+      renderError: false,
+      errorMessage: '',
+      searchQuery: '',
       weatherData: [],
-      forecasts: [{}, {}, {}],
+      lat: 0,
+      lon: 0,
+      weather: undefined,
+      movies: undefined,
     };
   }
 
 
+  requestData = async (e) => {
+    try {
+      let locationIqData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.searchQuery}&format=json`)
+      this.setState({
+        locationData: locationIqData.data[0],
+      })
+      console.log(this.state.locationData)
+    } catch (error) {
+      console.log('Wrongo, thats incorrect')
+    }
+    this.getWeather();
+  }
   getWeather = async () => {
 
     let lat = this.state.locationData.lat;
@@ -27,6 +44,7 @@ class Main extends React.Component {
 
     try {
       let results = await axios.get(url)
+      console.log(results)
       this.setState({
         weatherData: results.data,
         renderWeather: true,
@@ -55,7 +73,7 @@ class Main extends React.Component {
 
 
   handleQuery = (e) => {
-    this.setState({ query: e })
+    this.setState({ searchQuery: e })
   }
 
   handleSubmit = (e) => {
@@ -73,8 +91,12 @@ class Main extends React.Component {
     let dailyForecasts = this.state.weatherData.map((forecast, index) => {
       <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
     })
+    let dailyForecasts = this.state.weatherData.map((forecast, index) => (
+      <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
+    ))
 
     return (
+      <>
       <main className="m-3">
         <Form className="m-3 w-25" onSubmit={this.handleSubmit}>
           <Form.Group>
@@ -114,6 +136,7 @@ class Main extends React.Component {
         }
         <h3>{this.state.weatherErrorMessage}</h3>
       </main>
+      </>
     );
   }
 };

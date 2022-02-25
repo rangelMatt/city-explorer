@@ -47,9 +47,9 @@ Using bootstrap HTML, JavaScript, React, Bootstrap React, Axios, API.
 
 3. **Feature #3: Error**
    - Estimate of time needed to complete: 1 hour
-   - Start time:
-   - Finish time:
-   - Actual time: Not complete
+   - Start time: 3:00pm
+   - Finish time: 4:00pm
+   - Actual time: 1 hour
 
 ### Journal Entry
 
