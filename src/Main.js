@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, ListGroup, Card } from "react-bootstrap";
 import axios from "axios";
+import Weather from "./Weather";
 
 import Map from "./Map"
 // import Weather from "./Weather";
@@ -19,7 +20,7 @@ class Main extends React.Component {
       lat: 0,
       lon: 0,
       weather: undefined,
-      movies: undefined,
+      // movies: undefined,
     };
   }
 
@@ -27,8 +28,10 @@ class Main extends React.Component {
   requestData = async (e) => {
     try {
       let locationIqData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.searchQuery}&format=json`)
+
       this.setState({
         locationData: locationIqData.data[0],
+
       })
       console.log(this.state.locationData)
     } catch (error) {
@@ -40,11 +43,11 @@ class Main extends React.Component {
 
     let lat = this.state.locationData.lat;
     let lon = this.state.locationData.lon;
-    let url = `${SERVER}/weather?weather?lat=${lat}&lon=${lon}&days=3`;
+    let url = `${SERVER}/weather?lat=${lat}&lon=${lon}&days=3`;
 
     try {
       let results = await axios.get(url)
-      console.log(results)
+
       this.setState({
         weatherData: results.data,
         renderWeather: true,
@@ -117,6 +120,11 @@ class Main extends React.Component {
             this.state.renderWeather &&
             <ListGroup className="m-md-auto w50">
               {dailyForecasts}
+              {this.state.searchQuery}
+              {
+                this.state.weatherData &&
+                <Weather weatherData={this.state.weatherData} />
+              }
             </ListGroup>
           }
           <h3>{this.state.weatherErrorMessage}</h3>
