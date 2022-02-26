@@ -12,3 +12,4 @@ class WeatherDay extends React.Component {
 }
 
 export default WeatherDay;
+
