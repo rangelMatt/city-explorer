@@ -39,6 +39,7 @@ class Main extends React.Component {
       console.log('Wrongo, thats incorrect')
     }
     this.getWeather();
+    this.getMovie();
   }
   getWeather = async () => {
 
@@ -58,9 +59,27 @@ class Main extends React.Component {
         weatherError: true,
         weatherErrorMessage: `A Weather Error Occured: ${error.response.status}, ${error.response.data}`
       })
-
     }
+  }
 
+  getMovie = async () => {
+    let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?location=${this.state.searchQuery}`
+    console.log(moviesUrl);
+
+
+    try {
+      let movieResults = await axios.get(moviesUrl)
+        console.log(movieResults)
+      this.setState({
+        movieData: movieResults.data,
+        renderMovie: true,
+      })
+    } catch (error) {
+      this.setState({
+        movieError: true,
+        movieErrorMessage: `A Movie Error Occured: ${error.response.status}, ${error.response.data}`
+      })
+    }
   }
 
 
@@ -71,7 +90,7 @@ class Main extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.requestData(e.target.value);
-  
+
   }
 
 
@@ -79,10 +98,6 @@ class Main extends React.Component {
 
 
   render() {
-    console.log('main state', this.state);
-    let dailyForecasts = this.state.weatherData.map((forecast, index) => {
-      <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
-    })
 
     return (
       <>
@@ -120,11 +135,13 @@ class Main extends React.Component {
           {
             this.state.renderWeather &&
             <ListGroup className="m-md-auto w50">
-              {dailyForecasts}
               {this.state.searchQuery}
               {
                 this.state.weatherData &&
                 <Weather weatherData={this.state.weatherData} />
+              }
+              {this.state.renderMovie &&
+                <Movies movieData={this.state.movieData} city={this.state.searchQuery} />
               }
             </ListGroup>
           }
