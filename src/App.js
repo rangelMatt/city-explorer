@@ -1,12 +1,15 @@
 import './App.css';
 import Main from './Main';
-import React from 'react';
+
 
 function App() {
 
     return (
         <>
-
+        <h1 
+        className='text-center' 
+        
+        >City Explorer</h1>
             <Main />
 
         </>

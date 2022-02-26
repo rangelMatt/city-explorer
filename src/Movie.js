@@ -1,11 +1,12 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import WeatherDay from "./WeatherDay";
 
-class WeatherDay extends React.Component {
+class Movie extends React.component {
   render () {
     return (
       <ListGroup.Item>
-        {this.props.day.date}: {this.props.day.description}
+        {this.props.movie.title}
       </ListGroup.Item>
     )
   }

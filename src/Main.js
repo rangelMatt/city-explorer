@@ -2,6 +2,7 @@ import React from "react";
 import { Form, ListGroup, Card } from "react-bootstrap";
 import axios from "axios";
 import Weather from "./Weather";
+import Movies from "./Movies";
 
 import Map from "./Map"
 // import Weather from "./Weather";
@@ -20,7 +21,7 @@ class Main extends React.Component {
       lat: 0,
       lon: 0,
       weather: undefined,
-      // movies: undefined,
+      movieData: undefined,
     };
   }
 
@@ -70,7 +71,7 @@ class Main extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.requestData(e.target.value);
-    this.getWeather();
+  
   }
 
 
@@ -78,7 +79,7 @@ class Main extends React.Component {
 
 
   render() {
-
+    console.log('main state', this.state);
     let dailyForecasts = this.state.weatherData.map((forecast, index) => {
       <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
     })

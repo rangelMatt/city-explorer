@@ -5,12 +5,9 @@ import ListGroup from "react-bootstrap/ListGroup";
 class Weather extends React.Component {
  
   getListItemArray = () => {
-    let result = [];
-    this.props.weatherData.data.forEach((data) => {
-      result.push(
-        <WeatherDay data={data} key={data.date}/>
-      );
-    })
+    let result = this.props.weatherData.map((day) => (
+        <WeatherDay day={day} key={day.date}/>
+      ))
     return result;
   }
   render() {
