@@ -1,15 +1,14 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import WeatherDay from "./WeatherDay";
 
-class Movie extends React.component {
+class Movie extends React.Component {
   render () {
     return (
       <ListGroup.Item>
-        {this.props.movie.title}
+        {this.props.movie.movie}
       </ListGroup.Item>
     )
   }
 }
 
-export default WeatherDay;
+export default Movie;
